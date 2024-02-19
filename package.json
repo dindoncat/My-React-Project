@@ -2,7 +2,7 @@
   "name": "final_project",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://dindoncat.github.io/My-React-Project",
+  "homepage": "https://dindoncat.github.io/The-React-Project",
   "type": "module",
   "scripts": {
     "dev": "vite",
