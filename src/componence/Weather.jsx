@@ -6,7 +6,7 @@ const Weather = () => {
   const [temp, setTemp] = useState(0.0);
 
   const apiKey = "d01ebb075cec83c54b3efee558e90539";
-  const urlApi = `http://api.openweathermap.org/data/2.5/weather?q=${city.city}&appid=${apiKey}&units=metric`;
+  const urlApi = `https://api.openweathermap.org/data/2.5/weather?q=${city.city}&appid=${apiKey}&units=metric`;
 
   const fetchingData = () => {
     fetch(urlApi)
