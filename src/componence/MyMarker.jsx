@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Marker, Popup, useMap } from "react-leaflet";
 import {searchValue}from "../pages/ContactUs"
+import { Link } from "react-router-dom";
 const MyMarker = () => {
   const props = useContext(searchValue)
   const map = useMap();
@@ -9,9 +10,9 @@ const MyMarker = () => {
   return (
     <Marker position={props.position}>
       <Popup>
-        <a target="_blank" href="#">
+        <Link target="_blank" href="#">
           {props.label}
-        </a>
+        </Link>
       </Popup>
     </Marker>
   );
