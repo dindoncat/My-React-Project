@@ -18,7 +18,7 @@ const NavBar = () => {
   return (
     <Navbar expand="md" className="bg-body-tertiary bg-dark bg-good">
       <Container>
-        <NavLink to={"/My-React-Project"}>
+        <NavLink to={"/"}>
           <img 
           style={{ width: "100px", height: "60px" }}
           src={one} 
