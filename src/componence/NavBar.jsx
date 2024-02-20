@@ -6,10 +6,10 @@ import one from '../imges/logo.png';
 
 
 const navigation = [
-  { name: "About", to: "/About", current: false },
-  { name: "Gallery", to: "/Gallery", current: false },
-  { name: "FAQ", to: "/Faq", current: false },
-  { name: "Contact Us", to: "/ContactUs", current: false },
+  { name: "About", to: "/My-React-Project/About", current: false },
+  { name: "Gallery", to: "/My-React-Project/Gallery", current: false },
+  { name: "FAQ", to: "/My-React-Project/Faq", current: false },
+  { name: "Contact Us", to: "/My-React-Project/ContactUs", current: false },
 ];
 
 
@@ -18,7 +18,7 @@ const NavBar = () => {
   return (
     <Navbar expand="md" className="bg-body-tertiary bg-dark bg-good">
       <Container>
-        <NavLink to={"/"}>
+        <NavLink to={"/My-React-Project"}>
           <img 
           style={{ width: "100px", height: "60px" }}
           src={one} 

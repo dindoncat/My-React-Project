@@ -20,11 +20,11 @@ function App() {
       <NavBar />
       <div className="flex-grow-1">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="About" element={<About />} />
-          <Route path="Gallery" element={<Gallery />} />
-          <Route path="Faq" element={<Faq />} />
-          <Route path="ContactUs" element={<ContactUs />} />
+          <Route path="/My-React_Project" element={<Home />} />
+          <Route path="My-React_Project/About" element={<About />} />
+          <Route path="My-React_Project/Gallery" element={<Gallery />} />
+          <Route path="My-React_Project/Faq" element={<Faq />} />
+          <Route path="My-React_Project/ContactUs" element={<ContactUs />} />
         </Routes>
       </div>
       <Footer />
