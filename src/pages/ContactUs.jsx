@@ -152,7 +152,7 @@ const ContactUs = () => {
           ref={cityInputRef}
           name=""
           id=""
-          onChange={(e) => setCity(e.current.value) }
+          onChange={locationSearch}
         >
           <option value="Giv'atayim">Giv'atayim Center</option>
           <option value="Berlin">Berlin Center</option>
