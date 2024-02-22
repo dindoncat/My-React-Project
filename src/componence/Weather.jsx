@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import {searchValue} from "../pages/ContactUs"
+
 const Weather = () => {
   const city = useContext(searchValue);
   const [description, setDescription] = useState("");
