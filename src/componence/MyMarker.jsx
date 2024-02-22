@@ -4,7 +4,7 @@ import {searchValue}from "../pages/ContactUs"
 import { Link } from "react-router-dom";
 import {Icon} from 'leaflet'
 const MyMarker = () => {
-  const opjIcon = {iconUrl: "./pointOn.png",iconSize: [40,40]}
+  const opjIcon = {iconUrl: "./pointOn.png",iconSize: [60,60]}
   const myIcon = new Icon(opjIcon);
   const fromSearch = useContext(searchValue)
   const map = useMap();
