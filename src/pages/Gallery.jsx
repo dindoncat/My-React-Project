@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import Form from "react-bootstrap/Form";
+
 import MyPaginationBtn from "../componence/MyPagnationBtn"; // corrected import path
 import projects from "../jsons/project.json";
 import ProjectCard from "../componence/ProjectCard"; // corrected import path
-import Button from "react-bootstrap/Button";
 const Gallery = () => {
   const projectsArr = projects;
   const PROJECTS_PER_PAGE = 3; // corrected variable name
