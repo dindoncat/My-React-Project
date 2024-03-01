@@ -154,9 +154,9 @@ const ContactUs = () => {
           id=""
           onChange={locationSearch}
         >
-          <option value="Giv'atayim">Giv'atayim Center</option>
-          <option value="Berlin">Berlin Center</option>
-          <option value="London">UK Center</option>
+          <option value="Giv'atayim">Web Lab Center Giv'atayim katzanelson 61 </option>
+          <option value="Berlin">Web Lab Berlin Center dresdener 113b </option>
+          <option value="London">Web Lab UK Center Carels II st 14</option>
         </Form.Select>
         <div className="row card">
           <searchValue.Provider value={toSend}>
