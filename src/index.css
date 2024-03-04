@@ -168,3 +168,7 @@ main .card h3:hover{
   flex-direction: column;
   min-height: 100vh;
 }
+.active2{
+  background: blue;
+  color: white;
+}
