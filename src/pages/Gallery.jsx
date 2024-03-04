@@ -10,10 +10,60 @@ const Gallery = () => {
   const [activeBtn, setActiveBtn] = useState(1);
   const [buttonNum, setButtonNumber] = useState(1);
   const [totalPages , setTolalPages] = useState(Math.ceil(projectsArr.length / PROJECTS_PER_PAGE));
+  const [filterArr, setFilterArr] = useState(projectsArr)
   // const totalPages = Math.ceil(projectsArr.length / PROJECTS_PER_PAGE); // corrected variable name
   const [searchValue, setSearchValue] = useState("");
   const [choice, setChoice] = useState("name");
 
+  const onEachBtn = (pageNumber) => {
+    const startIndex = (pageNumber - 1) * PROJECTS_PER_PAGE;
+    const endIndex = startIndex + PROJECTS_PER_PAGE;
+    const tempArr = filterArr.slice(startIndex, endIndex);
+    setArr(tempArr);
+    setStart(startIndex);
+    setActiveBtn(pageNumber);
+    setButtonNumber(pageNumber);
+  };
+
+  const creatPaginationButtons = () => {
+    const buttons = [];
+    for (let index = 1; index <= totalPages; index++) {
+      buttons.push(
+        <MyPaginationBtn
+          key={index}
+          onEach={onEachBtn} // corrected prop name
+          number={index}
+          activeBtn={activeBtn}
+        />
+      );
+    }
+    return buttons;
+  };
+
+  const next = () => {
+    const startIndex = start + PROJECTS_PER_PAGE;
+    const tempArr = filterArr.slice(
+      startIndex,
+      startIndex + PROJECTS_PER_PAGE
+    );
+    setArr(tempArr);
+    setStart(startIndex);
+    setActiveBtn(buttonNum + 1);
+    setButtonNumber(buttonNum + 1);
+  };
+
+  const back = () => {
+    const startIndex = start - PROJECTS_PER_PAGE;
+    const tempArr = filterArr.slice(
+      startIndex,
+      startIndex + PROJECTS_PER_PAGE
+    );
+    setArr(tempArr);
+    setStart(startIndex);
+    setActiveBtn(buttonNum - 1);
+    setButtonNumber(buttonNum - 1);
+  };
+  
   const filterProjects = () => {
     let newArray = projectsArr.filter((item) => {
       if (choice === "name") {
@@ -32,12 +82,15 @@ const Gallery = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const filterArr = filterProjects();
-    if (arr.length > 0) {
-      setArr(filterArr);
+    if (filterArr.length > 0) {
+      setArr(filterArr.slice(0, PROJECTS_PER_PAGE));
+      setFilterArr(filterArr)
       setTolalPages(Math.ceil(filterArr.length / PROJECTS_PER_PAGE))
     } else {
       alert("invalid");
-      setArr(filterArr);
+      setArr(projectsArr.slice(0, PROJECTS_PER_PAGE));
+      setFilterArr(projectsArr)
+      setTolalPages(Math.ceil(projectsArr.length / PROJECTS_PER_PAGE))
     }
   };
 
@@ -54,56 +107,7 @@ const Gallery = () => {
     ));
     return compsArr;
   };
-  const onEachBtn = (pageNumber) => {
-    const startIndex = (pageNumber - 1) * PROJECTS_PER_PAGE;
-    const endIndex = Math.min(
-      startIndex + PROJECTS_PER_PAGE,
-      projectsArr.length
-    );
-    const tempArr = projectsArr.slice(startIndex, endIndex);
-    setArr(tempArr);
-    setStart(startIndex);
-    setActiveBtn(pageNumber);
-    setButtonNumber(pageNumber);
-  };
-  const creatPaginationButtons = () => {
-    const buttons = [];
-    for (let index = 1; index <= totalPages; index++) {
-      buttons.push(
-        <MyPaginationBtn
-          key={index}
-          onEach={onEachBtn} // corrected prop name
-          number={index}
-          activeBtn={activeBtn}
-        />
-      );
-    }
-    return buttons;
-  };
-
-  const next = () => {
-    const startIndex = start + PROJECTS_PER_PAGE;
-    const tempArr = projectsArr.slice(
-      startIndex,
-      startIndex + PROJECTS_PER_PAGE
-    );
-    setArr(tempArr);
-    setStart(startIndex);
-    setActiveBtn(buttonNum + 1);
-    setButtonNumber(buttonNum + 1);
-  };
-
-  const back = () => {
-    const startIndex = start - PROJECTS_PER_PAGE;
-    const tempArr = projectsArr.slice(
-      startIndex,
-      startIndex + PROJECTS_PER_PAGE
-    );
-    setArr(tempArr);
-    setStart(startIndex);
-    setActiveBtn(buttonNum - 1);
-    setButtonNumber(buttonNum - 1);
-  };
+  
 
   return (
     <main className="container-fluid bg-light ">
@@ -139,7 +143,7 @@ const Gallery = () => {
                 <button
                   className="page-link"
                   onClick={next}
-                  disabled={start + PROJECTS_PER_PAGE >= projectsArr.length}
+                  disabled={start + PROJECTS_PER_PAGE >= filterArr.length}
                 >
                   Next
                 </button>
