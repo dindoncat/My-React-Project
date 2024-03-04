@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import MyPaginationBtn from "../componence/MyPagnationBtn"; // corrected import path
 import projects from "../jsons/project.json";
 import ProjectCard from "../componence/ProjectCard"; // corrected import path
@@ -10,7 +9,8 @@ const Gallery = () => {
   const [start, setStart] = useState(0);
   const [activeBtn, setActiveBtn] = useState(1);
   const [buttonNum, setButtonNumber] = useState(1);
-  const totalPages = Math.ceil(projectsArr.length / PROJECTS_PER_PAGE); // corrected variable name
+  const [totalPages , setTolalPages] = useState(Math.ceil(projectsArr.length / PROJECTS_PER_PAGE));
+  // const totalPages = Math.ceil(projectsArr.length / PROJECTS_PER_PAGE); // corrected variable name
   const [searchValue, setSearchValue] = useState("");
   const [choice, setChoice] = useState("name");
 
@@ -18,12 +18,12 @@ const Gallery = () => {
     let newArray = projectsArr.filter((item) => {
       if (choice === "name") {
         return (
-          item.name.toLocaleLowerCase() === searchValue.toLocaleLowerCase()
+          item.name.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())
         );
       }
       if (choice === "description") {
         return (
-          item.description.toLocaleLowerCase() === searchValue.toLocaleLowerCase()
+          item.description.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())
         );
       }
     });
@@ -34,9 +34,10 @@ const Gallery = () => {
     const filterArr = filterProjects();
     if (arr.length > 0) {
       setArr(filterArr);
+      setTolalPages(Math.ceil(filterArr.length / PROJECTS_PER_PAGE))
     } else {
       alert("invalid");
-      setArr(carsArray);
+      setArr(filterArr);
     }
   };
 
